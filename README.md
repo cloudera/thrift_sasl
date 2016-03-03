@@ -3,7 +3,5 @@
 Thrift SASL Python module that implements SASL transports for Thrift
 (`TSaslClientTransport`).
 
-Note: if you want to use this module with Python 3, you must use this Python
-`sasl` fork instead of the currently PyPI released one:
-
-https://github.com/laserson/python-sasl.git@cython
+On Linux, this requires `libsasl2-dev` to be installed. On OS X you may have to
+install Cyrus SASL v2 from source.

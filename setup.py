@@ -25,7 +25,8 @@ PY3 = sys.version_info[0] == 3
 
 description = ("Thrift SASL Python module that implements SASL transports for "
                "Thrift (`TSaslClientTransport`).")
-requirements = []
+requirements = ['sasl>=0.2.1']
+
 if PY2:
     requirements.append('thrift')
 if PY3:
@@ -36,7 +37,7 @@ if PY3:
 
 setup(
     name='thrift_sasl',
-    version='0.1.0',
+    version='0.2.0',
     description=description,
     long_description=description,
     author='Uri Laserson',
