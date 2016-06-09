@@ -37,11 +37,13 @@ if PY3:
 
 setup(
     name='thrift_sasl',
-    version='0.2.0',
+    version='0.2.1',
     description=description,
     long_description=description,
     author='Uri Laserson',
     author_email='laserson@cloudera.com',
+    maintainer='Wes McKinney',
+    maintainer_email='wes@cloudera.com',
     url='https://github.com/cloudera/thrift_sasl',
     install_requires=requirements,
     packages=['thrift_sasl'],
