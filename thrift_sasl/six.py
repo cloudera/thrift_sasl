@@ -44,5 +44,11 @@ if PY3:
   from io import BytesIO as StringIO
   from thriftpy.transport import TTransportException, TTransportBase, readall
 
-  is_open_compat = lambda trans: trans.is_open()
+  def is_open_compat(trans):
+    try:
+      is_open = trans.is_open()
+    except AttributeError:
+      is_open = trans.isOpen()
+    return is_open
+
   read_all_compat = lambda trans, sz: readall(trans.read, sz)
