@@ -15,8 +15,11 @@
 from __future__ import absolute_import
 
 import sys
-
 from setuptools import setup
+
+
+def is_platform_windows():
+    return sys.platform == 'win32' or sys.platform == 'cygwin'
 
 
 PY2 = sys.version_info[0] == 2
@@ -25,7 +28,12 @@ PY3 = sys.version_info[0] == 3
 
 description = ("Thrift SASL Python module that implements SASL transports for "
                "Thrift (`TSaslClientTransport`).")
-requirements = ['sasl>=0.2.1']
+
+if is_platform_windows():
+    # installing sasl on windows is rather painful.  Defer to using the pure python version instead.
+    requirements = ['pure-sasl>=0.3.0']
+else:
+    requirements = ['sasl>=0.2.1']
 
 if PY2:
     requirements.append('thrift')
