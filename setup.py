@@ -18,30 +18,11 @@ import sys
 from setuptools import setup
 
 
-def is_platform_windows():
-    return sys.platform == 'win32' or sys.platform == 'cygwin'
-
-
-PY2 = sys.version_info[0] == 2
 PY3 = sys.version_info[0] == 3
+WINDOWS = sys.platform == 'win32' or sys.platform == 'cygwin'
 
-
-description = ("Thrift SASL Python module that implements SASL transports for "
-               "Thrift (`TSaslClientTransport`).")
-
-if is_platform_windows():
-    # installing sasl on windows is rather painful.  Defer to using the pure python version instead.
-    requirements = ['pure-sasl>=0.3.0']
-else:
-    requirements = ['sasl>=0.2.1']
-
-if PY2:
-    requirements.append('thrift')
-if PY3:
-    # Apache Thrift does not yet support Python 3 (see THRIFT-1857).  We use
-    # thriftpy as a stopgap replacement
-    requirements.append('thriftpy')
-
+description=("Thrift SASL Python module that implements SASL transports for "
+             "Thrift (`TSaslClientTransport`).")
 
 setup(
     name='thrift_sasl',
@@ -53,7 +34,12 @@ setup(
     maintainer='Wes McKinney',
     maintainer_email='wes@cloudera.com',
     url='https://github.com/cloudera/thrift_sasl',
-    install_requires=requirements,
+    install_requires=[
+        # Python 3 support was added to thrift in version 0.10.0.
+        'thrift>=0.10.0' if PY3 else 'thrift',
+        # Installing sasl on Windows is rather painful, so use the pure python implementation on Windows
+        'pure-sasl>=0.3.0' if WINDOWS else 'sasl>=0.2.1',
+    ],
     packages=['thrift_sasl'],
     keywords='thrift sasl transport',
     license='Apache License, Version 2.0',
@@ -63,5 +49,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4']
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6']
 )
