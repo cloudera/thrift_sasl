@@ -21,12 +21,12 @@ from setuptools import setup
 PY3 = sys.version_info[0] == 3
 WINDOWS = sys.platform == 'win32' or sys.platform == 'cygwin'
 
-description=("Thrift SASL Python module that implements SASL transports for "
-             "Thrift (`TSaslClientTransport`).")
+description = ("Thrift SASL Python module that implements SASL transports for "
+               "Thrift (`TSaslClientTransport`).")
 
 setup(
     name='thrift_sasl',
-    version='0.2.1',
+    version='0.3.0',
     description=description,
     long_description=description,
     author='Uri Laserson',
@@ -37,7 +37,8 @@ setup(
     install_requires=[
         # Python 3 support was added to thrift in version 0.10.0.
         'thrift>=0.10.0' if PY3 else 'thrift',
-        # Installing sasl on Windows is rather painful, so use the pure python implementation on Windows
+        # Installing sasl on Windows is rather painful, so use the pure python
+        # implementation on Windows
         'pure-sasl>=0.3.0' if WINDOWS else 'sasl>=0.2.1',
     ],
     packages=['thrift_sasl'],
