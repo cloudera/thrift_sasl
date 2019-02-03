@@ -165,27 +165,27 @@ class TSaslClientTransport(TTransportBase, CReadableTransport):
 
   def read(self, sz):
     ret = self.__rbuf.read(sz)
-    if len(ret) == sz:
+    if len(ret) != 0:
       return ret
 
     self._read_frame()
-    return ret + self.__rbuf.read(sz - len(ret))
+    return ret + self.__rbuf.read(sz)
 
   def _read_frame(self):
-    header = self._trans.read(4)
+    header = self._trans.readAll(4)
     (length,) = struct.unpack(">I", header)
     if self.encode:
       # If the frames are encoded (i.e. you're using a QOP of auth-int or
       # auth-conf), then make sure to include the header in the bytes you send to
       # sasl.decode()
-      encoded = header + self._trans.read(length)
+      encoded = header + self._trans.readAll(length)
       success, decoded = self.sasl.decode(encoded)
       if not success:
         raise TTransportException(type=TTransportException.UNKNOWN,
                                   message=self.sasl.getError())
     else:
       # If the frames are not encoded, just pass it through
-      decoded = self._trans.read(length)
+      decoded = self._trans.readAll(length)
     self.__rbuf = BufferIO(decoded)
 
   def close(self):
