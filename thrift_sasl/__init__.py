@@ -164,6 +164,8 @@ class TSaslClientTransport(TTransportBase, CReadableTransport):
     self._trans.write(struct.pack(">I", len(buffer)) + buffer)
 
   def read(self, sz):
+    if sz == 0:
+      return b''
     ret = self.__rbuf.read(sz)
     if len(ret) != 0:
       return ret
