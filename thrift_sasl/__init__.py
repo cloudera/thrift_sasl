@@ -21,6 +21,7 @@
 
 from __future__ import absolute_import
 
+import six
 import sys
 import struct
 
@@ -103,8 +104,7 @@ class TSaslClientTransport(TTransportBase, CReadableTransport):
 
   def _send_message(self, status, body):
     header = struct.pack(">BI", status, len(body))
-    if isinstance(body, str):
-      body = body.encode()
+    body = six.ensure_binary(body)
     self._trans.write(header + body)
     self._trans.flush()
 
