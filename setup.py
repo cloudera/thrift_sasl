@@ -35,7 +35,7 @@ setup(
         'thrift>=0.10.0' if PY3 else 'thrift==0.9.3',
         # Installing sasl on Windows is rather painful, so use the pure python
         # implementation on Windows
-        'pure-sasl>=0.3.0' if WINDOWS else 'sasl>=0.2.1',
+        'pure-sasl>=0.3.0' if WINDOWS else 'sasl3>=0.2.11',
         'six>=1.13.0'
     ],
     packages=['thrift_sasl'],
