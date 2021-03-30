@@ -34,7 +34,7 @@ setup(
         # Installing sasl on Windows is rather painful, so use the pure python
         # implementation on Windows
         "pure-sasl>=0.3.0;sys_platform=='win32' or sys_platform=='cygwin'",
-        "sasl>=0.2.1;sys_platform!='win32' and sys_platform!='cygwin'",
+        "sasl>=0.3a1;sys_platform!='win32' and sys_platform!='cygwin'",
         "six>=1.13.0"
     ],
     packages=['thrift_sasl'],
