@@ -22,7 +22,7 @@ description = ("Thrift SASL Python module that implements SASL transports for "
 
 setup(
     name='thrift_sasl',
-    version='0.4.2',
+    version='0.4.3a1',
     description=description,
     long_description=description,
     url='https://github.com/cloudera/thrift_sasl',
