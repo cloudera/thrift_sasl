@@ -26,7 +26,7 @@ setup(
     description=description,
     long_description=description,
     url='https://github.com/cloudera/thrift_sasl',
-    setup_requires=['setuptools>=36.2'],
+    setup_requires=['setuptools>=20.5'],
     install_requires=[
         # Python 3 support was added to thrift in version 0.10.0.
         "thrift>=0.10.0;python_version>='3.0'",
