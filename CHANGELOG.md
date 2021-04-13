@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.4.3
+------
+* **Bug Fixes**
+  - Replaced environment conditionals with environment markers in `setup.py` (#29)
+
 0.4.2
 ------
 * **Bug Fixes**
