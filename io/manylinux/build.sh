@@ -30,13 +30,7 @@ GIT_URL="https://github.com/${GITHUB_ACCOUNT}/${GIT_REPO}.git"
 WHEELHOUSE_DIR="${PIP_DISTS_BUILD_DIR}/wheelhouse"
 SDIST_DIR="${PIP_DISTS_BUILD_DIR}/sdist"
 
-# cyrus-sasl & cyrus-sasl-devel are required by sasl package
-SYSTEM_REQUIREMENTS=(cyrus-sasl cyrus-sasl-devel krb5-libs krb5-devel)
-
 prepare_system() {
-  # Install system packages required by sasl
-  yum install -y "${SYSTEM_REQUIREMENTS[@]}"
-
   cd /tmp
   git clone -b "$GIT_VERSION_TAG" --single-branch "$GIT_URL"
   cd "$GIT_REPO"

@@ -31,10 +31,7 @@ setup(
         # Python 3 support was added to thrift in version 0.10.0.
         "thrift>=0.10.0;python_version>='3.0'",
         "thrift>=0.9.3;python_version<'3.0'",
-        # Installing sasl on Windows is rather painful, so use the pure python
-        # implementation on Windows
-        "pure-sasl>=0.3.0;sys_platform=='win32' or sys_platform=='cygwin'",
-        "sasl>=0.3a1;sys_platform!='win32' and sys_platform!='cygwin'",
+        "pure-sasl>=0.6.2",
         "six>=1.13.0"
     ],
     packages=['thrift_sasl'],
