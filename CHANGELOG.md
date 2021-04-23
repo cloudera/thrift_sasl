@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.4.3a2
+------
+* **Improvements**
+  - Use pure-sasl instead of sasl to avoid dependency on g++
+
 0.4.3a1
 ------
 * **Bug Fixes**
