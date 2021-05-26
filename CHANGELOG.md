@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.4.3
+------
+  - Identical to 0.4.3a2
+
 0.4.3a2
 ------
 * **Improvements**
